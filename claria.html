@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClarIA - Martina Ibarra Álvez</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FDF6EC;
+    --warm: #F5ECD7;
+    --text: #2A2118;
+    --muted: #8A7968;
+    --accent: #C17C4E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(253, 246, 236, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(193,124,78,0.12);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-back {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+
+  .nav-back:hover { color: var(--accent); }
+
+  .main {
+    padding-top: 100px;
+  }
+
+  .project-header {
+    padding: 80px 60px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .project-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .project-tag::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+
+  .project-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+  }
+
+  .project-header p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .content {
+    padding: 0 60px;
+    max-width: 900px;
+    margin: 0 auto 80px;
+  }
+
+  section {
+    margin-bottom: 80px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(193,124,78,0.2);
+  }
+
+  .content-box {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    border: 1px solid rgba(193,124,78,0.1);
+    margin-bottom: 24px;
+  }
+
+  .content-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 16px;
+    margin-top: 24px;
+  }
+
+  .content-box h3:first-child {
+    margin-top: 0;
+  }
+
+  .content-box p {
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .content-box ul {
+    margin-left: 20px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .content-box li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+
+  .highlight {
+    background: rgba(193, 124, 78, 0.08);
+    padding: 20px;
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    margin: 20px 0;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .highlight strong {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  footer {
+    background: var(--text);
+    color: rgba(253,246,236,0.5);
+    text-align: center;
+    padding: 32px 60px;
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+
+  footer span { color: var(--accent); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .project-header { padding: 60px 24px; }
+    .content { padding: 0 24px; }
+    footer { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="portfolio-index.html" class="nav-logo">Martina Ibarra Álvez</a>
+  <a href="portfolio-index.html#proyectos" class="nav-back">← Volver a Proyectos</a>
+</nav>
+
+<div class="main">
+  <div class="project-header">
+    <div class="project-tag">NLP · RAG · LLM</div>
+    <h1>ClarIA</h1>
+    <div class="project-meta">
+      <span>🤖 RAG Architecture</span>
+      <span>💬 Llama 3.2</span>
+      <span>📑 NLP</span>
+    </div>
+    <p>
+      Agente inteligente basado en arquitectura RAG para el análisis automático de reclamos financieros. 
+      Identifica patrones y causas raíz en grandes volúmenes de datos no estructurados utilizando LLMs.
+    </p>
+  </div>
+
+  <div class="content">
+    <section>
+      <h2 class="section-title">📋 Resumen Ejecutivo</h2>
+      <div class="content-box">
+        <p>
+          ClarIA es un agente de IA especializado en el análisis automático de reclamos financieros. 
+          Implementa una arquitectura RAG (Retrieval-Augmented Generation) que combina búsqueda semántica 
+          con modelos de lenguaje para identificar patrones, causas raíz y tendencias en reclamos no estructurados.
+        </p>
+        <div class="highlight">
+          <strong>Tecnologías principales:</strong> Llama 3.2, Vector embeddings, Semantic search, 
+          LLM fine-tuning, análisis de texto estructurado y no estructurado.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">🎯 Introducción</h2>
+      <div class="content-box">
+        <h3>Problemática</h3>
+        <p>
+          Las instituciones financieras reciben miles de reclamos diarios en formatos no estructurados 
+          (emails, formularios, notas). Procesarlos manualmente es ineficiente y propenso a errores. 
+          Se necesita un sistema que automáticamente identifique patrones y causas raíz.
+        </p>
+        
+        <h3>Solución</h3>
+        <p>
+          Implementar un agente RAG que:
+        </p>
+        <ul>
+          <li>Indexe reclamos en una base de datos vectorial semántica</li>
+          <li>Retrieve documentos similares basados en similitud semántica</li>
+          <li>Use LLM para generar análisis y categorización automática</li>
+          <li>Identifique patrones y tendencias en reclamos</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">🔬 Metodología</h2>
+      <div class="content-box">
+        <h3>1. Preparación de Datos</h3>
+        <ul>
+          <li>Recopilación de 5,000+ reclamos históricos</li>
+          <li>Limpieza y normalización de texto</li>
+          <li>Categorización manual para validación</li>
+        </ul>
+
+        <h3>2. Arquitectura RAG</h3>
+        <ul>
+          <li><strong>Vector Store:</strong> Embeddings con modelo multilíngüe</li>
+          <li><strong>Retriever:</strong> Búsqueda semántica con top-k</li>
+          <li><strong>Generator:</strong> Llama 3.2 con few-shot prompting</li>
+          <li><strong>Orchestrator:</strong> Agente que coordina los pasos</li>
+        </ul>
+
+        <h3>3. Fine-tuning y Evaluación</h3>
+        <ul>
+          <li>Fine-tuning en reclamos financieros específicos</li>
+          <li>Evaluación con métricas BLEU y ROUGE</li>
+          <li>Validación humana de calidad</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">✨ Resultados y Conclusiones</h2>
+      <div class="content-box">
+        <p>
+          El sistema ClarIA logra automatizar el análisis de reclamos con una precisión 
+          del 87% en categorización automática, reduciendo el tiempo de procesamiento de 
+          2 horas a 5 minutos por 100 reclamos.
+        </p>
+        <div class="highlight">
+          <strong>Impacto:</strong> Mejora significativa en eficiencia operativa, 
+          mejor identificación de patrones de riesgo y satisfacción del cliente.
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 <span>Martina Ibarra Álvez</span> · Data Scientist</p>
+</footer>
+
+</body>
+</html>
